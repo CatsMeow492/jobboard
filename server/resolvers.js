@@ -1,7 +1,11 @@
+import { Job } from './db.js';
 export const resolvers = {
     Query: {
-        greeting() {
-            return "hello world";
+        jobs: async () => Job.findAll(),
+    },
+
+    Job: {
+        company: (job) => Company.findbyId(job.companyId)
         },
     }
 };
